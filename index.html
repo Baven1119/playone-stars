@@ -106,37 +106,45 @@ nav {
 .btn-secondary:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
 
 /* HERO KOL PHOTOS */
-.hero-kols {
-  position: absolute; right: 3%; top: 50%; transform: translateY(-50%);
-  display: flex; gap: 16px; align-items: center; z-index: 2;
-  width: 48%;
+/* HERO CAROUSEL */
+.hero-carousel {
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 52%; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
 }
-.hero-kol-photo {
-  flex: 1;
-  aspect-ratio: 1 / 1.2;
-  border-radius: 8px; overflow: hidden;
+.carousel-track {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; position: relative;
+}
+.carousel-item {
+  position: absolute;
+  border-radius: 12px; overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+.carousel-item img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3);
+  color: var(--neon-cyan); font-size: 28px; line-height: 1;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+  z-index: 10; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.carousel-btn:hover { background: rgba(0,229,255,0.25); box-shadow: 0 0 16px rgba(0,229,255,0.3); }
+.carousel-prev { left: 12px; }
+.carousel-next { right: 12px; }
+.carousel-info {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  text-align: center; z-index: 10;
+  background: rgba(7,11,18,0.75); backdrop-filter: blur(8px);
   border: 1px solid rgba(0,229,255,0.2);
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  transition: transform 0.3s;
+  padding: 10px 24px; border-radius: 40px; min-width: 160px;
 }
-.hero-kol-photo:hover { transform: translateY(-6px); }
-.hero-kol-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-.hero-kol-photo:nth-child(1) { border-color: rgba(255,63,164,0.3); }
-.hero-kol-photo:nth-child(2) { border-color: rgba(0,229,255,0.3); transform: translateY(-20px); }
-.hero-kol-photo:nth-child(3) { border-color: rgba(155,93,229,0.3); }
-.hero-kol-name {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 40px 10px 16px;
-  background: linear-gradient(transparent, rgba(7,11,18,0.85));
-  font-family: var(--font-display); font-size: 16px; font-weight: 700;
-  letter-spacing: 2px; text-align: center; color: var(--text);
-}
-.hero-kol-photo:nth-child(1) .hero-kol-name { color: var(--neon-pink); }
-.hero-kol-photo:nth-child(2) .hero-kol-name { color: var(--neon-cyan); }
-.hero-kol-photo:nth-child(3) .hero-kol-name { color: var(--neon-purple); }
-
-/* hero left fade removed */
+.carousel-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: 2px; color: var(--text); margin-bottom: 2px; }
+.carousel-ig { font-family: var(--font-display); font-size: 13px; color: var(--neon-cyan); letter-spacing: 1px; }
+.carousel-ig span { background: rgba(0,229,255,0.15); border: 1px solid rgba(0,229,255,0.3); padding: 1px 6px; border-radius: 3px; margin-right: 6px; font-size: 10px; }
 
 /* STATS */
 .stats-strip { position: relative; z-index: 1; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 5%; }
@@ -282,7 +290,7 @@ footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px 
 
 /* RWD */
 @media (max-width: 1024px) {
-  .hero-kols { display: none; }
+  .hero-carousel { display: none; }
   .kol-grid { grid-template-columns: repeat(4, 1fr); }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .process-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
@@ -343,19 +351,27 @@ footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px 
     </div>
   </div>
 
-  <!-- Hero KOL Photos -->
-  <div class="hero-kols">
-    <div class="hero-kol-photo">
-      <img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/香香.png" alt="香香">
-      <div class="hero-kol-name">香香</div>
+  <!-- Hero KOL Carousel -->
+  <div class="hero-carousel">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-item" data-name="小熊二二" data-ig="28,000">
+        <img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/%E4%B8%BB%E8%A6%96%E8%A6%BA-%E5%B0%8F%E7%86%8A%E4%BA%8C%E4%BA%8C-1.png" alt="小熊二二">
+      </div>
+      <div class="carousel-item" data-name="拍拍" data-ig="13,000">
+        <img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/%E4%B8%BB%E8%A6%96%E8%A6%BA-%E6%8B%8D%E6%8B%8D.jpg" alt="拍拍">
+      </div>
+      <div class="carousel-item" data-name="酥米" data-ig="2,662">
+        <img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/%E4%B8%BB%E8%A6%96%E8%A6%BA-%E9%85%A5%E7%B1%B3.jpg" alt="酥米">
+      </div>
+      <div class="carousel-item" data-name="小魚寶" data-ig="2,373">
+        <img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/%E4%B8%BB%E8%A6%96%E8%A6%BA-%E5%B0%8F%E9%AD%9A%E5%AF%B6.png" alt="小魚寶">
+      </div>
     </div>
-    <div class="hero-kol-photo">
-      <img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/77.png" alt="77">
-      <div class="hero-kol-name">77</div>
-    </div>
-    <div class="hero-kol-photo">
-      <img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/小熊二二.png" alt="小熊二二">
-      <div class="hero-kol-name">小熊二二</div>
+    <button class="carousel-btn carousel-prev" onclick="carouselMove(-1)">‹</button>
+    <button class="carousel-btn carousel-next" onclick="carouselMove(1)">›</button>
+    <div class="carousel-info" id="carouselInfo">
+      <div class="carousel-name" id="carouselName">小熊二二</div>
+      <div class="carousel-ig" id="carouselIg"><span>IG</span> 28,000</div>
     </div>
   </div>
 </section>
@@ -500,9 +516,9 @@ footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px 
         <div class="price-unit">/ 次活動</div>
       </div>
       <div class="service-name">品牌擴散包</div>
-      <div class="service-desc">3–8 位 KOL 組合投放，跨地區、跨遊戲類型觸及，建立品牌在遊戲圈的存在感。</div>
+      <div class="service-desc">5–10 位 KOL 組合投放，跨地區、跨遊戲類型觸及，建立品牌在遊戲圈的存在感。</div>
       <ul class="service-features">
-        <li><strong>3–8 位</strong>KOL 組合</li>
+        <li><strong>5–10 位</strong>KOL 組合</li>
         <li>多平台交叉覆蓋</li>
         <li>客製化內容腳本協作</li>
         <li>完整互動 + 轉換報告</li>
@@ -590,19 +606,91 @@ function toggleMenu() {
 }
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 60);
-    }
+    if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 60);
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-function handleSubmit(event) {
-  const btn = event.currentTarget;
-  btn.textContent = '✓ 已收到！業務將在 24 小時內聯繫';
-  btn.style.background = 'linear-gradient(135deg,#1db954,#1a8c3e)';
-  btn.style.boxShadow = '0 0 30px rgba(29,185,84,0.3)';
-  btn.disabled = true;
+
+// Carousel
+let current = 0;
+const items = document.querySelectorAll('.carousel-item');
+const total = items.length;
+const nameEl = document.getElementById('carouselName');
+const igEl = document.getElementById('carouselIg');
+
+function updateCarousel() {
+  const track = document.getElementById('carouselTrack');
+  const W = track.offsetWidth;
+  const H = track.offsetHeight;
+  const mainW = Math.min(W * 0.48, 320);
+  const mainH = mainW * 1.35;
+  const sideW = mainW * 0.52;
+  const sideH = sideW * 1.35;
+
+  items.forEach((item, i) => {
+    let offset = (i - current + total) % total;
+    if (offset > total / 2) offset -= total;
+
+    if (offset === 0) {
+      item.style.width = mainW + 'px';
+      item.style.height = mainH + 'px';
+      item.style.left = (W / 2 - mainW / 2) + 'px';
+      item.style.top = (H / 2 - mainH / 2) + 'px';
+      item.style.zIndex = 5;
+      item.style.opacity = '1';
+      item.style.filter = 'none';
+      item.style.boxShadow = '0 30px 80px rgba(0,0,0,0.7), 0 0 40px rgba(0,229,255,0.15)';
+      item.style.border = '1px solid rgba(0,229,255,0.4)';
+    } else if (offset === 1 || offset === -(total - 1)) {
+      item.style.width = sideW + 'px';
+      item.style.height = sideH + 'px';
+      item.style.left = (W / 2 + mainW * 0.36) + 'px';
+      item.style.top = (H / 2 - sideH / 2 + 20) + 'px';
+      item.style.zIndex = 3;
+      item.style.opacity = '0.55';
+      item.style.filter = 'brightness(0.7)';
+      item.style.boxShadow = 'none';
+      item.style.border = '1px solid rgba(255,255,255,0.1)';
+    } else if (offset === -1 || offset === total - 1) {
+      item.style.width = sideW + 'px';
+      item.style.height = sideH + 'px';
+      item.style.left = (W / 2 - mainW * 0.36 - sideW) + 'px';
+      item.style.top = (H / 2 - sideH / 2 + 20) + 'px';
+      item.style.zIndex = 3;
+      item.style.opacity = '0.55';
+      item.style.filter = 'brightness(0.7)';
+      item.style.boxShadow = 'none';
+      item.style.border = '1px solid rgba(255,255,255,0.1)';
+    } else {
+      item.style.opacity = '0';
+      item.style.zIndex = 1;
+      item.style.left = (W / 2) + 'px';
+      item.style.top = (H / 2) + 'px';
+    }
+  });
+
+  const activeItem = items[current];
+  nameEl.textContent = activeItem.dataset.name;
+  igEl.innerHTML = '<span>IG</span> ' + activeItem.dataset.ig;
 }
+
+function carouselMove(dir) {
+  current = (current + dir + total) % total;
+  updateCarousel();
+}
+
+items.forEach((item, i) => {
+  item.addEventListener('click', () => {
+    if (i !== current) {
+      current = i;
+      updateCarousel();
+    }
+  });
+});
+
+window.addEventListener('resize', updateCarousel);
+setTimeout(updateCarousel, 100);
+setInterval(() => carouselMove(1), 4000);
 </script>
 </body>
 </html>
