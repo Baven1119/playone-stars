@@ -107,22 +107,24 @@ nav {
 
 /* HERO KOL PHOTOS */
 .hero-kols {
-  position: absolute; right: 0; top: 0; bottom: 0;
-  display: flex; gap: 8px; align-items: stretch; z-index: 2;
-  width: 52%;
+  position: absolute; right: 3%; top: 50%; transform: translateY(-50%);
+  display: flex; gap: 16px; align-items: center; z-index: 2;
+  width: 48%;
 }
 .hero-kol-photo {
-  flex: 1; border-radius: 0; overflow: hidden;
-  border-left: 1px solid rgba(0,229,255,0.15);
+  flex: 1;
+  aspect-ratio: 1 / 1.2;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(0,229,255,0.2);
   position: relative;
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
   transition: transform 0.3s;
 }
-.hero-kol-photo:hover { transform: scale(1.02); }
+.hero-kol-photo:hover { transform: translateY(-6px); }
 .hero-kol-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-.hero-kol-photo:nth-child(1) { border-color: rgba(255,63,164,0.2); }
-.hero-kol-photo:nth-child(2) { border-color: rgba(0,229,255,0.2); }
-.hero-kol-photo:nth-child(3) { border-color: rgba(155,93,229,0.2); }
+.hero-kol-photo:nth-child(1) { border-color: rgba(255,63,164,0.3); }
+.hero-kol-photo:nth-child(2) { border-color: rgba(0,229,255,0.3); transform: translateY(-20px); }
+.hero-kol-photo:nth-child(3) { border-color: rgba(155,93,229,0.3); }
 .hero-kol-name {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 40px 10px 16px;
@@ -134,13 +136,7 @@ nav {
 .hero-kol-photo:nth-child(2) .hero-kol-name { color: var(--neon-cyan); }
 .hero-kol-photo:nth-child(3) .hero-kol-name { color: var(--neon-purple); }
 
-/* hero left fade */
-.hero-kols::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0; width: 120px;
-  background: linear-gradient(90deg, var(--bg), transparent);
-  z-index: 3; pointer-events: none;
-}
+/* hero left fade removed */
 
 /* STATS */
 .stats-strip { position: relative; z-index: 1; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 5%; }
@@ -426,16 +422,16 @@ footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px 
   </div>
   <div class="kol-grid">
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/可比.png" alt="可比"></div><div class="kol-info"><div class="kol-name">可比</div><div class="kol-cta">合作 ›</div></div></a>
-    <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/%E4%BD%95%E5%AC%A1.png" alt="何嬡"></div><div class="kol-info"><div class="kol-name">何嬡</div><div class="kol-cta">合作 ›</div></div></a>
+    
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/拍拍.png" alt="拍拍"></div><div class="kol-info"><div class="kol-name">拍拍</div><div class="kol-cta">合作 ›</div></div></a>
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/林涵.png" alt="林涵"></div><div class="kol-info"><div class="kol-name">林涵</div><div class="kol-cta">合作 ›</div></div></a>
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/河豚小妞.png" alt="河豚小妞"></div><div class="kol-info"><div class="kol-name">河豚小妞</div><div class="kol-cta">合作 ›</div></div></a>
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/花花寶貝.png" alt="花花寶貝"></div><div class="kol-info"><div class="kol-name">花花寶貝</div><div class="kol-cta">合作 ›</div></div></a>
-    <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/%E5%99%B9%E5%99%B9%E5%A4%8F%E5%8F%AF.png" alt="噹噹夏可"></div><div class="kol-info"><div class="kol-name">噹噹夏可</div><div class="kol-cta">合作 ›</div></div></a>
+    
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/天天.png" alt="天天"></div><div class="kol-info"><div class="kol-name">天天</div><div class="kol-cta">合作 ›</div></div></a>
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/宣.png" alt="宣"></div><div class="kol-info"><div class="kol-name">宣</div><div class="kol-cta">合作 ›</div></div></a>
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/小惡魔77.png" alt="小惡魔77"></div><div class="kol-info"><div class="kol-name">小惡魔77</div><div class="kol-cta">合作 ›</div></div></a>
-    <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/小漢漢.png" alt="小漢漢"></div><div class="kol-info"><div class="kol-name">小漢漢</div><div class="kol-cta">合作 ›</div></div></a>
+    
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/小熊二二.png" alt="小熊二二"></div><div class="kol-info"><div class="kol-name">小熊二二</div><div class="kol-cta">合作 ›</div></div></a>
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/小魚寶.png" alt="小魚寶"></div><div class="kol-info"><div class="kol-name">小魚寶</div><div class="kol-cta">合作 ›</div></div></a>
     <a href="#contact" class="kol-card fade-in"><div class="kol-avatar"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/檸檬.png" alt="檸檬"></div><div class="kol-info"><div class="kol-name">檸檬</div><div class="kol-cta">合作 ›</div></div></a>
@@ -464,7 +460,7 @@ footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px 
     <div class="case-card fade-in"><div class="case-img"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/曹操不囉唆_遊戲直播3.png" alt="曹操不囉唆"></div><div class="case-label">曹操不囉唆 × 遊戲直播</div></div>
     <div class="case-card fade-in"><div class="case-img"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/曹操不囉唆_遊戲直播4.png" alt="曹操不囉唆"></div><div class="case-label">曹操不囉唆 × 遊戲直播</div></div>
     <div class="case-card fade-in"><div class="case-img"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/曹操不囉唆_遊戲直播5.png" alt="曹操不囉唆"></div><div class="case-label">曹操不囉唆 × 遊戲直播</div></div>
-    <div class="case-card fade-in"><div class="case-img"><img src="https://raw.githubusercontent.com/Baven1119/playone-stars/main/%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82%E5%B1%95_%E8%A8%AD%E8%A8%88%E4%BD%88%E7%BD%AE1.png" alt="智慧城市展"></div><div class="case-label">智慧城市展 × 設計佈置</div></div>
+    
   </div>
   <div class="kol-more fade-in" style="margin-top:40px;">
     <a href="#contact" class="kol-more-text">有合作需求？立即聯繫業務 ›</a>
